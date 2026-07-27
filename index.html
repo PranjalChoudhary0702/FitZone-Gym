@@ -1,0 +1,676 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FitZone Gym | Premium Fitness, Personal Training & Recovery</title>
+  <meta name="description" content="FitZone Gym is the premier 24/7 fitness club featuring Olympic weightlifting platforms, high-intensity HIIT studios, infrared saunas, and certified elite personal trainers. Claim your 3-day pass today!">
+  <meta name="keywords" content="gym, fitness club, personal trainer, HIIT classes, weightlifting, infrared sauna, recovery lounge, local gym">
+
+  <!-- Open Graph / Meta -->
+  <meta property="og:title" content="FitZone Gym - Elevate Your Fitness Limits">
+  <meta property="og:description" content="State-of-the-art 15,000 sq ft fitness facility with Olympic gear, expert trainers, and recovery lounge.">
+  <meta property="og:type" content="website">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Syne:wght@700;800&display=swap" rel="stylesheet">
+
+  <!-- Font Awesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="assets/css/styles.css">
+</head>
+<body>
+
+  <!-- Toast Notification Container -->
+  <div id="toastContainer"></div>
+
+  <!-- ==========================================
+       HEADER & NAVIGATION
+       ========================================== -->
+  <header class="navbar" id="navbar">
+    <div class="container nav-container">
+      <a href="#hero" class="brand-logo">
+        <div class="logo-icon">
+          <i class="fa-solid fa-dumbbell"></i>
+        </div>
+        <span>FIT<span class="text-lime">ZONE</span></span>
+      </a>
+
+      <nav class="nav-links">
+        <a href="#about" class="nav-link">About</a>
+        <a href="#programs" class="nav-link">Programs</a>
+        <a href="#schedule" class="nav-link">Schedule</a>
+        <a href="#pricing" class="nav-link">Pricing</a>
+        <a href="#trainers" class="nav-link">Trainers</a>
+        <a href="#testimonials" class="nav-link">Reviews</a>
+        <a href="#contact" class="nav-link">Contact</a>
+        <a href="admin.html" class="nav-link text-cyan" style="font-size: 0.85rem;"><i class="fa-solid fa-user-gear"></i> Owner Portal</a>
+      </nav>
+
+      <div class="nav-actions">
+        <button class="btn btn-primary trigger-trial-modal">
+          <i class="fa-solid fa-bolt"></i> Free 3-Day Pass
+        </button>
+        <button class="mobile-toggle" id="mobileToggle" aria-label="Toggle Navigation Menu">
+          <i class="fa-solid fa-bars"></i>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Drawer -->
+  <div class="mobile-nav-backdrop" id="mobileNavBackdrop"></div>
+  <div class="mobile-nav" id="mobileNav">
+    <div>
+      <div class="mobile-nav-header">
+        <a href="#hero" class="brand-logo">
+          <div class="logo-icon"><i class="fa-solid fa-dumbbell"></i></div>
+          <span>FIT<span class="text-lime">ZONE</span></span>
+        </a>
+        <button class="modal-close" id="mobileNavClose" style="position: static;"><i class="fa-solid fa-xmark"></i></button>
+      </div>
+      <div class="mobile-nav-links">
+        <a href="#about" class="mobile-nav-link">About Us</a>
+        <a href="#programs" class="mobile-nav-link">Programs & Services</a>
+        <a href="#schedule" class="mobile-nav-link">Class Schedule</a>
+        <a href="#pricing" class="mobile-nav-link">Membership Plans</a>
+        <a href="#trainers" class="mobile-nav-link">Elite Coaches</a>
+        <a href="#testimonials" class="mobile-nav-link">Member Reviews</a>
+        <a href="#contact" class="mobile-nav-link">Contact & Location</a>
+        <a href="admin.html" class="mobile-nav-link text-cyan"><i class="fa-solid fa-user-gear"></i> Owner Admin Portal</a>
+      </div>
+    </div>
+    <div style="margin-top: 2rem;">
+      <button class="btn btn-primary trigger-trial-modal" style="width: 100%;">
+        <i class="fa-solid fa-bolt"></i> Claim Free 3-Day Pass
+      </button>
+    </div>
+  </div>
+
+  <main>
+    <!-- ==========================================
+         HERO SECTION
+         ========================================== -->
+    <section class="hero" id="hero">
+      <div class="hero-bg-media">
+        <img src="assets/images/hero_bg.jpg" onerror="this.src='https://images.unsplash.com/photo-1534438327276-14e5300c3a48?q=80&w=1600&auto=format&fit=crop'" alt="FitZone Gym Interior">
+      </div>
+
+      <div class="container">
+        <div class="hero-content">
+          <div class="hero-badge">
+            <span class="hero-badge-pulse"></span>
+            #1 PREMIUM FITNESS CLUB IN METRO CITY
+          </div>
+
+          <h1 class="hero-title">
+            ELEVATE YOUR <span class="text-gradient">LIMITS.</span><br>
+            TRANSFORM YOUR <span class="text-lime">BODY.</span>
+          </h1>
+
+          <p class="hero-description">
+            Experience 15,000 sq ft of Olympic-grade equipment, heart-rate tracked HIIT studios, infrared sauna recovery lounges, and elite 1-on-1 personal coaching tailored to your goals.
+          </p>
+
+          <div class="hero-actions">
+            <button class="btn btn-primary trigger-trial-modal">
+              <i class="fa-solid fa-ticket"></i> Claim Free 3-Day VIP Pass
+            </button>
+            <a href="#schedule" class="btn btn-secondary">
+              <i class="fa-regular fa-calendar-check"></i> Explore Class Schedule
+            </a>
+          </div>
+
+          <!-- Hero Stats Counter Bar -->
+          <div class="hero-stats">
+            <div class="stat-item">
+              <span class="stat-number" data-target="24/7">24/7</span>
+              <span class="stat-label">Member Facility Access</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-number" data-target="15+">0+</span>
+              <span class="stat-label">Certified Elite Coaches</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-number" data-target="4.9★">0★</span>
+              <span class="stat-label">4,500+ Member Reviews</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-number" data-target="98%">0%</span>
+              <span class="stat-label">Goal Transformation Rate</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================
+         ABOUT SECTION
+         ========================================== -->
+    <section class="section" id="about">
+      <div class="container">
+        <div class="about-grid">
+          <div class="about-image-wrapper">
+            <img src="assets/images/facility.jpg" loading="lazy" onerror="this.src='https://images.unsplash.com/photo-1540497077202-7c8a3999166f?q=80&w=1200&auto=format&fit=crop'" alt="FitZone Recovery & Facility">
+            <div class="play-badge trigger-trial-modal" title="Book Virtual Tour">
+              <i class="fa-solid fa-play"></i>
+            </div>
+          </div>
+
+          <div>
+            <div class="section-tag">
+              <i class="fa-solid fa-shield-halved"></i> WHY FITZONE GYM
+            </div>
+            <h2 class="section-title">BUILT FOR ATHLETES, DESIGNED FOR EVERYONE</h2>
+            <p class="section-subtitle">
+              At FitZone, we believe world-class fitness shouldn't be reserved for pros. Whether you are lifting your first dumbbell or prepping for a powerlifting competition, our facility provides the atmosphere, science, and equipment to unlock your full potential.
+            </p>
+
+            <div class="feature-list">
+              <div class="feature-item">
+                <div class="feature-icon"><i class="fa-solid fa-fingerprint"></i></div>
+                <div>
+                  <h4 class="feature-title">Keyless Biometric Entry</h4>
+                  <p class="feature-desc">Seamless 24/7 app check-in with high-security biometric scanners.</p>
+                </div>
+              </div>
+
+              <div class="feature-item">
+                <div class="feature-icon"><i class="fa-solid fa-chart-line"></i></div>
+                <div>
+                  <h4 class="feature-title">Smart Progress Tracking</h4>
+                  <p class="feature-desc">InBody 3D body composition analysis & workout sync app.</p>
+                </div>
+              </div>
+
+              <div class="feature-item">
+                <div class="feature-icon"><i class="fa-solid fa-temperature-arrow-down"></i></div>
+                <div>
+                  <h4 class="feature-title">Infrared & Cryo Lounge</h4>
+                  <p class="feature-desc">Accelerate recovery with infrared saunas and cold plunge tubs.</p>
+                </div>
+              </div>
+
+              <div class="feature-item">
+                <div class="feature-icon"><i class="fa-solid fa-user-ninja"></i></div>
+                <div>
+                  <h4 class="feature-title">Custom Nutrition Plans</h4>
+                  <p class="feature-desc">Personalized macro coaching tailored specifically to your metabolic profile.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================
+         SERVICES & PROGRAMS SECTION
+         ========================================== -->
+    <section class="section" id="programs" style="background: rgba(17, 22, 34, 0.4);">
+      <div class="container">
+        <div style="text-align: center; margin-bottom: 2.5rem;">
+          <div class="section-tag"><i class="fa-solid fa-cubes"></i> DIVERSE TRAINING PROGRAMS</div>
+          <h2 class="section-title">ENGINEERED FOR RESULTS</h2>
+          <p class="section-subtitle" style="margin: 0 auto;">Choose from specialized training environments designed to target strength, cardiovascular endurance, mobility, and rapid fat loss.</p>
+        </div>
+
+        <div class="filter-tabs" id="programTabs">
+          <button class="tab-btn active" data-filter="all">All Programs</button>
+          <button class="tab-btn" data-filter="strength">Strength & Hypertrophy</button>
+          <button class="tab-btn" data-filter="hiit">HIIT & Cardio</button>
+          <button class="tab-btn" data-filter="boxing">Boxing & Martial Arts</button>
+          <button class="tab-btn" data-filter="recovery">Recovery & Mobility</button>
+        </div>
+
+        <div class="programs-grid">
+          <div class="program-card" data-category="strength">
+            <div>
+              <div class="program-icon-badge"><i class="fa-solid fa-dumbbell"></i></div>
+              <h3>Olympic Heavy Iron</h3>
+              <p>Custom Rogue platforms, Eleiko bumper plates, calibrated steel discs, and 12 power racks for serious strength progression.</p>
+            </div>
+            <div class="program-meta">
+              <span><i class="fa-regular fa-clock"></i> 60 Mins</span>
+              <span><i class="fa-solid fa-gauge-high"></i> High Intensity</span>
+            </div>
+          </div>
+
+          <div class="program-card" data-category="hiit">
+            <div>
+              <div class="program-icon-badge"><i class="fa-solid fa-heart-pulse"></i></div>
+              <h3>Heart-Rate HIIT Studio</h3>
+              <p>Science-backed interval training with real-time heart rate monitoring screens to maximize your EPOC calorie burn for 24 hours.</p>
+            </div>
+            <div class="program-meta">
+              <span><i class="fa-regular fa-clock"></i> 45 Mins</span>
+              <span><i class="fa-solid fa-fire"></i> 700+ Cal Burn</span>
+            </div>
+          </div>
+
+          <div class="program-card" data-category="boxing">
+            <div>
+              <div class="program-icon-badge"><i class="fa-solid fa-hand-fist"></i></div>
+              <h3>Knockout Boxing Ring</h3>
+              <p>Heavy bag technical combinations, footwork drills, speed bag work, and controlled sparring under golden gloves coaches.</p>
+            </div>
+            <div class="program-meta">
+              <span><i class="fa-regular fa-clock"></i> 50 Mins</span>
+              <span><i class="fa-solid fa-user-shield"></i> All Levels</span>
+            </div>
+          </div>
+
+          <div class="program-card" data-category="recovery">
+            <div>
+              <div class="program-icon-badge"><i class="fa-solid fa-spa"></i></div>
+              <h3>Cryo & Sauna Sanctuary</h3>
+              <p>Full-spectrum infrared saunas, 50°F cold plunge therapy, Hyperice percussion guns, and automated leg compression boots.</p>
+            </div>
+            <div class="program-meta">
+              <span><i class="fa-regular fa-clock"></i> Open Access</span>
+              <span><i class="fa-solid fa-leaf"></i> Wellness</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================
+         INTERACTIVE CLASS SCHEDULE SECTION
+         ========================================== -->
+    <section class="section schedule-section" id="schedule">
+      <div class="container">
+        <div style="text-align: center; margin-bottom: 3rem;">
+          <div class="section-tag"><i class="fa-regular fa-calendar-days"></i> LIVE REST API SCHEDULE</div>
+          <h2 class="section-title">WEEKLY TRAINING SCHEDULE</h2>
+          <p class="section-subtitle" style="margin: 0 auto;">Select any day of the week to view our live instructor-led group classes and reserve your spot.</p>
+        </div>
+
+        <div class="day-selector">
+          <button class="day-btn active" data-day="mon">Monday</button>
+          <button class="day-btn" data-day="tue">Tuesday</button>
+          <button class="day-btn" data-day="wed">Wednesday</button>
+          <button class="day-btn" data-day="thu">Thursday</button>
+          <button class="day-btn" data-day="fri">Friday</button>
+          <button class="day-btn" data-day="sat">Saturday</button>
+          <button class="day-btn" data-day="sun">Sunday</button>
+        </div>
+
+        <div class="schedule-grid" id="scheduleGrid">
+          <!-- Dynamic API Content & Skeleton Loader -->
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================
+         MEMBERSHIP PRICING SECTION
+         ========================================== -->
+    <section class="section" id="pricing">
+      <div class="container">
+        <div style="text-align: center; margin-bottom: 2.5rem;">
+          <div class="section-tag"><i class="fa-solid fa-tag"></i> TRANSPARENT PRICING</div>
+          <h2 class="section-title">MEMBERSHIP PLANS WITH NO HIDDEN FEES</h2>
+          <p class="section-subtitle" style="margin: 0 auto;">Choose the right level of access for your lifestyle. All plans include 24/7 access and custom mobile app integration.</p>
+        </div>
+
+        <!-- Billing Toggle -->
+        <div class="billing-toggle-container">
+          <span class="billing-label">Pay Monthly</span>
+          <label class="switch">
+            <input type="checkbox" id="billingToggle">
+            <span class="slider"></span>
+          </label>
+          <span class="billing-label">Pay Annually</span>
+          <span class="save-badge">SAVE 20%</span>
+        </div>
+
+        <div class="pricing-grid" id="pricingGrid">
+          <!-- Dynamic API Content & Skeleton Loader -->
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================
+         TRAINERS SECTION
+         ========================================== -->
+    <section class="section" id="trainers" style="background: rgba(17, 22, 34, 0.4);">
+      <div class="container">
+        <div style="text-align: center; margin-bottom: 3rem;">
+          <div class="section-tag"><i class="fa-solid fa-user-astronaut"></i> EXPERT COACHES</div>
+          <h2 class="section-title">MEET OUR ELITE INSTRUCTORS</h2>
+          <p class="section-subtitle" style="margin: 0 auto;">Our trainers hold nationally accredited CSCS, NASM, and Olympic lifting certifications to safely guide your journey.</p>
+        </div>
+
+        <div class="trainers-grid" id="trainersGrid">
+          <!-- Dynamic API Content & Skeleton Loader -->
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================
+         TESTIMONIALS SECTION
+         ========================================== -->
+    <section class="section" id="testimonials">
+      <div class="container">
+        <div style="text-align: center; margin-bottom: 3rem;">
+          <div class="section-tag"><i class="fa-solid fa-comment-dots"></i> REAL RESULTS</div>
+          <h2 class="section-title">WHAT OUR MEMBERS SAY</h2>
+          <p class="section-subtitle" style="margin: 0 auto;">Over 4,500 local members have transformed their strength, health, and mindset at FitZone.</p>
+        </div>
+
+        <div class="testimonials-grid">
+          <div class="testimonial-card">
+            <div>
+              <div class="rating-stars">
+                <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+              </div>
+              <p class="testimonial-quote">
+                "FitZone completely changed my perception of gyms. The staff is welcoming, the equipment is pristine, and the infrared sauna after heavy lifting is worth the membership alone!"
+              </p>
+            </div>
+            <div class="testimonial-author">
+              <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=200&auto=format&fit=crop" loading="lazy" class="author-avatar" alt="Jessica Miller">
+              <div>
+                <div class="author-name">Jessica Miller</div>
+                <div class="author-achievement">Lost 22 lbs in 90 Days • VIP Member</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="testimonial-card">
+            <div>
+              <div class="rating-stars">
+                <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+              </div>
+              <p class="testimonial-quote">
+                "As a powerlifter, finding a gym with real Rogue power racks and calibrated plates without waiting in line is rare. Marcus' coaching added 45 lbs to my deadlift!"
+              </p>
+            </div>
+            <div class="testimonial-author">
+              <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=200&auto=format&fit=crop" loading="lazy" class="author-avatar" alt="David Chen">
+              <div>
+                <div class="author-name">David Chen</div>
+                <div class="author-achievement">+45 lbs Deadlift PR • Standard Member</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="testimonial-card">
+            <div>
+              <div class="rating-stars">
+                <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+              </div>
+              <p class="testimonial-quote">
+                "The 6 AM HIIT classes keep me accountable before work. The app tracks all my macros and metrics seamlessly. Best investment I've made for my health."
+              </p>
+            </div>
+            <div class="testimonial-author">
+              <img src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?q=80&w=200&auto=format&fit=crop" loading="lazy" class="author-avatar" alt="Amanda Ross">
+              <div>
+                <div class="author-name">Amanda Ross</div>
+                <div class="author-achievement">Marathon Finisher • VIP Member</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================
+         CONTACT & FAQ SECTION
+         ========================================== -->
+    <section class="section" id="contact" style="background: rgba(17, 22, 34, 0.4);">
+      <div class="container">
+        <div class="contact-grid">
+          <!-- Interactive Contact Form -->
+          <div>
+            <div class="section-tag"><i class="fa-solid fa-envelope"></i> GET IN TOUCH</div>
+            <h2 class="section-title">READY TO START YOUR JOURNEY?</h2>
+            <p class="section-subtitle" style="margin-bottom: 2rem;">Send us a message or request a tour. Our team will reach out within 2 business hours.</p>
+
+            <form id="contactForm">
+              <div class="form-group">
+                <label class="form-label" for="contactName">Full Name *</label>
+                <input type="text" id="contactName" class="form-input" placeholder="e.g. Alex Morgan" required>
+              </div>
+
+              <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+                <div class="form-group">
+                  <label class="form-label" for="contactEmail">Email Address *</label>
+                  <input type="email" id="contactEmail" class="form-input" placeholder="alex@example.com" required>
+                </div>
+                <div class="form-group">
+                  <label class="form-label" for="contactPhone">Phone Number *</label>
+                  <input type="tel" id="contactPhone" class="form-input" placeholder="(555) 019-2834" required>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label" for="contactGoal">Primary Fitness Goal</label>
+                <select id="contactGoal" class="form-select">
+                  <option value="Fat Loss & Toning">Fat Loss & Toning</option>
+                  <option value="Muscle & Strength">Muscle & Strength Building</option>
+                  <option value="HIIT & Endurance">HIIT & Endurance</option>
+                  <option value="Rehab & Mobility">Rehab & Mobility</option>
+                  <option value="General Health & Wellness">General Health & Wellness</option>
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label" for="contactMessage">Your Message *</label>
+                <textarea id="contactMessage" class="form-textarea" rows="4" placeholder="Tell us about your workout goals..." required></textarea>
+              </div>
+
+              <button type="submit" class="btn btn-primary" style="width: 100%;">
+                <i class="fa-solid fa-paper-plane"></i> Send Inquiry & Request Tour
+              </button>
+            </form>
+          </div>
+
+          <!-- FAQ Accordion & Location Info -->
+          <div>
+            <div class="section-tag"><i class="fa-solid fa-circle-question"></i> FREQUENTLY ASKED QUESTIONS</div>
+            <h2 class="section-title">COMMON QUESTIONS</h2>
+
+            <div class="faq-list" style="margin-bottom: 2.5rem;">
+              <div class="faq-item active">
+                <button class="faq-question">
+                  What are FitZone's operating hours?
+                  <i class="fa-solid fa-chevron-down faq-icon"></i>
+                </button>
+                <div class="faq-answer">
+                  FitZone offers 24/7 keyless mobile app access for all active members. Staffed reception, smoothie bar, and personal training hours are Monday–Friday (6:00 AM – 9:00 PM) and Saturday–Sunday (8:00 AM – 6:00 PM).
+                </div>
+              </div>
+
+              <div class="faq-item">
+                <button class="faq-question">
+                  How does the 3-Day Free VIP Pass work?
+                  <i class="fa-solid fa-chevron-down faq-icon"></i>
+                </button>
+                <div class="faq-answer">
+                  When you claim a free 3-day pass online, you will receive an instant digital QR code on your phone. Present it at reception on your first visit to activate 72 hours of full gym & group class access.
+                </div>
+              </div>
+
+              <div class="faq-item">
+                <button class="faq-question">
+                  Are there long-term contracts or cancellation fees?
+                  <i class="fa-solid fa-chevron-down faq-icon"></i>
+                </button>
+                <div class="faq-answer">
+                  No annual contracts required! Our monthly plans operate on a simple month-to-month basis. You can pause or cancel anytime with 30 days written notice.
+                </div>
+              </div>
+            </div>
+
+            <!-- Location Box -->
+            <div style="background: var(--bg-card); border: 1px solid var(--bg-glass-border); border-radius: var(--radius-md); padding: 1.5rem;">
+              <h4 style="font-size: 1.1rem; margin-bottom: 1rem; color: var(--accent-lime);"><i class="fa-solid fa-location-dot"></i> Visit Our Location</h4>
+              <p style="color: var(--text-secondary); font-size: 0.9rem; margin-bottom: 0.8rem;">
+                <strong>FitZone Gym Metro Flagship</strong><br>
+                742 Fitness Boulevard, Suite 100<br>
+                Metro City, NY 10001
+              </p>
+              <p style="color: var(--text-secondary); font-size: 0.9rem;">
+                <i class="fa-solid fa-phone"></i> (555) FIT-ZONE &nbsp;|&nbsp; <i class="fa-solid fa-envelope"></i> info@fitzonegym.com
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ==========================================
+       FOOTER
+       ========================================== -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-col">
+          <a href="#hero" class="brand-logo">
+            <div class="logo-icon"><i class="fa-solid fa-dumbbell"></i></div>
+            <span>FIT<span class="text-lime">ZONE</span></span>
+          </a>
+          <p>
+            Metro City's premier 24/7 fitness facility built for strength, performance, and recovery. Engineered for results.
+          </p>
+          <div style="display: flex; gap: 1rem; color: var(--accent-lime); font-size: 1.2rem;">
+            <a href="#hero" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+            <a href="#hero" aria-label="Facebook"><i class="fa-brands fa-facebook"></i></a>
+            <a href="#hero" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
+            <a href="#hero" aria-label="TikTok"><i class="fa-brands fa-tiktok"></i></a>
+          </div>
+        </div>
+
+        <div class="footer-col">
+          <h4 class="footer-title">Quick Links</h4>
+          <div class="footer-links">
+            <a href="#about" class="footer-link">About Facility</a>
+            <a href="#programs" class="footer-link">Training Programs</a>
+            <a href="#schedule" class="footer-link">Class Schedule</a>
+            <a href="#pricing" class="footer-link">Membership Plans</a>
+            <a href="admin.html" class="footer-link text-cyan">Owner Admin CMS Portal</a>
+          </div>
+        </div>
+
+        <div class="footer-col">
+          <h4 class="footer-title">Hours</h4>
+          <div class="footer-links">
+            <span class="footer-link"><strong>24/7 Keyless Access</strong></span>
+            <span class="footer-link">Mon–Fri: 6am – 9pm (Staffed)</span>
+            <span class="footer-link">Sat–Sun: 8am – 6pm (Staffed)</span>
+          </div>
+        </div>
+
+        <div class="footer-col">
+          <h4 class="footer-title">VIP Insider Newsletter</h4>
+          <p style="font-size: 0.85rem;">Get free workout tips, nutrition guides, and class alerts.</p>
+          <form onsubmit="event.preventDefault(); Toast.success('Subscribed to FitZone Insider!'); this.reset();">
+            <input type="email" class="form-input" placeholder="Your email address" required style="margin-bottom: 0.8rem;">
+            <button type="submit" class="btn btn-primary btn-sm" style="width: 100%;">Subscribe</button>
+          </form>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <div>&copy; 2026 FitZone Gym Inc. All rights reserved. Express & MongoDB REST API Connected.</div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ==========================================
+       MODAL: FREE 3-DAY PASS
+       ========================================== -->
+  <div class="modal-overlay" id="trialModal">
+    <div class="modal-card">
+      <button class="modal-close"><i class="fa-solid fa-xmark"></i></button>
+      <div style="text-align: center; margin-bottom: 1.5rem;">
+        <span class="section-tag" style="margin-bottom: 0.5rem;"><i class="fa-solid fa-bolt"></i> VIP EXPERIENTIAL PASS</span>
+        <h3 style="font-size: 1.6rem;">CLAIM YOUR FREE 3-DAY PASS</h3>
+        <p style="color: var(--text-secondary); font-size: 0.9rem;">Experience our 24/7 facility, attend live group classes, and test out the infrared sauna.</p>
+      </div>
+
+      <form id="trialForm">
+        <div class="form-group">
+          <label class="form-label" for="trialName">First & Last Name *</label>
+          <input type="text" id="trialName" class="form-input" placeholder="e.g. Marcus Miller" required>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="trialEmail">Email Address *</label>
+          <input type="email" id="trialEmail" class="form-input" placeholder="marcus@example.com" required>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="trialPhone">Mobile Phone (For Pass QR Code) *</label>
+          <input type="tel" id="trialPhone" class="form-input" placeholder="(555) 234-5678" required>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="trialDate">Intended Start Date</label>
+          <input type="date" id="trialDate" class="form-input" required>
+        </div>
+
+        <button type="submit" class="btn btn-primary" style="width: 100%;">
+          <i class="fa-solid fa-qrcode"></i> Generate Digital VIP Pass
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <!-- ==========================================
+       MODAL: CLASS BOOKING
+       ========================================== -->
+  <div class="modal-overlay" id="bookingModal">
+    <div class="modal-card">
+      <button class="modal-close"><i class="fa-solid fa-xmark"></i></button>
+      <div style="text-align: center; margin-bottom: 1.5rem;">
+        <span class="section-tag" style="margin-bottom: 0.5rem;"><i class="fa-regular fa-calendar-check"></i> RESERVE SPOT</span>
+        <h3 style="font-size: 1.6rem;">BOOK CLASS SEAT</h3>
+      </div>
+
+      <form id="bookingForm">
+        <input type="hidden" id="bookingScheduleId">
+        <div class="form-group">
+          <label class="form-label">Selected Class</label>
+          <input type="text" id="bookingClassName" class="form-input" readonly style="background: rgba(255,255,255,0.05); color: var(--accent-lime); font-weight: 700;">
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="bookName">Your Full Name *</label>
+          <input type="text" id="bookName" class="form-input" placeholder="e.g. Sarah Connor" required>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="bookEmail">Email Address *</label>
+          <input type="email" id="bookEmail" class="form-input" placeholder="sarah@example.com" required>
+        </div>
+
+        <button type="submit" class="btn btn-primary" style="width: 100%;">
+          <i class="fa-solid fa-check"></i> Confirm Reservation
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Axios Library -->
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
+  <!-- Application API Scripts -->
+  <script src="assets/js/config.js"></script>
+  <script src="assets/js/toast.js"></script>
+  <script src="assets/js/services/api.js"></script>
+  <script src="assets/js/services/planService.js"></script>
+  <script src="assets/js/services/trainerService.js"></script>
+  <script src="assets/js/services/scheduleService.js"></script>
+  <script src="assets/js/services/bookingService.js"></script>
+  <script src="assets/js/services/contactService.js"></script>
+  <script src="assets/js/main.js"></script>
+</body>
+</html>

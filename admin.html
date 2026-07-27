@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FitZone Gym - Owner Admin CMS Portal</title>
+  
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Syne:wght@700;800&display=swap" rel="stylesheet">
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="assets/css/styles.css">
+  <link rel="stylesheet" href="assets/css/admin.css">
+</head>
+<body class="admin-body">
+
+  <div id="toastContainer"></div>
+
+  <!-- ==========================================
+       ADMIN PIN GATE AUTHENTICATION MODAL OVERLAY
+       ========================================== -->
+  <div class="pin-gate-overlay" id="adminPinGate">
+    <div class="pin-card">
+      <div class="pin-header">
+        <div class="logo-icon"><i class="fa-solid fa-shield-halved"></i></div>
+        <h3>FITZONE CMS SECURITY</h3>
+        <p>Enter 4-6 Digit Owner PIN to Access Admin Portal</p>
+      </div>
+
+      <form id="adminPinForm">
+        <div class="form-group">
+          <input type="password" id="adminPinInput" class="form-input pin-input" maxlength="6" placeholder="• • • •" autocomplete="off" required autofocus>
+        </div>
+
+        <button type="submit" class="btn btn-primary" id="pinSubmitBtn" style="width: 100%;">
+          <i class="fa-solid fa-lock-open"></i> Authenticate & Unlock Portal
+        </button>
+      </form>
+
+      <div class="pin-footer">
+        <a href="index.html" class="footer-link"><i class="fa-solid fa-arrow-left"></i> Return to Public Website</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==========================================
+       PROTECTED DASHBOARD TEMPLATE (DORMANT UNTIL AUTHENTICATED)
+       ========================================== -->
+  <template id="adminDashboardTemplate">
+    <div class="admin-dashboard-wrapper" id="adminDashboard">
+      <!-- Admin Navigation Header -->
+      <header class="admin-header">
+        <div class="admin-nav-container">
+          <a href="index.html" class="brand-logo">
+            <div class="logo-icon"><i class="fa-solid fa-dumbbell"></i></div>
+            <span>FIT<span class="text-lime">ZONE</span> <small class="admin-tag">CMS PORTAL</small></span>
+          </a>
+
+          <div class="admin-header-actions">
+            <button class="btn btn-secondary btn-sm" id="testEmailBtn"><i class="fa-solid fa-paper-plane"></i> Test Brevo Email</button>
+            <a href="index.html" class="btn btn-secondary btn-sm"><i class="fa-solid fa-globe"></i> Public Website</a>
+            <button class="btn btn-outline-lime btn-sm" id="adminLogoutBtn" style="color: var(--accent-crimson); border-color: var(--accent-crimson);"><i class="fa-solid fa-right-from-bracket"></i> Lock Portal</button>
+          </div>
+        </div>
+      </header>
+
+      <div class="admin-layout">
+        <!-- Admin Sidebar Navigation -->
+        <aside class="admin-sidebar">
+          <nav class="admin-menu">
+            <button class="admin-menu-btn active" data-tab="trainers">
+              <i class="fa-solid fa-user-astronaut"></i> Manage Trainers
+            </button>
+            <button class="admin-menu-btn" data-tab="plans">
+              <i class="fa-solid fa-tag"></i> Membership Plans
+            </button>
+            <button class="admin-menu-btn" data-tab="schedules">
+              <i class="fa-regular fa-calendar-days"></i> Class Schedules
+            </button>
+            <button class="admin-menu-btn" data-tab="inquiries">
+              <i class="fa-solid fa-inbox"></i> Contact Inquiries & Bookings
+            </button>
+          </nav>
+        </aside>
+
+        <!-- Admin Main Content Area -->
+        <main class="admin-content">
+          
+          <!-- TAB 1: TRAINERS MANAGEMENT -->
+          <section class="admin-section active" id="tab-trainers">
+            <div class="admin-section-header">
+              <div>
+                <h2>Certified Trainers Manager</h2>
+                <p>Add new certified coaches, edit profiles, or delete trainer entries.</p>
+              </div>
+              <button class="btn btn-primary btn-sm" id="openAddTrainerModal"><i class="fa-solid fa-plus"></i> Add New Trainer</button>
+            </div>
+
+            <div class="admin-table-wrapper">
+              <table class="admin-table">
+                <thead>
+                  <tr>
+                    <th>Trainer Name</th>
+                    <th>Role / Title</th>
+                    <th>Category</th>
+                    <th>Experience</th>
+                    <th>Actions</th>
+                  </tr>
+                </thead>
+                <tbody id="trainersTableBody">
+                  <!-- Rendered via admin.js -->
+                </tbody>
+              </table>
+            </div>
+          </section>
+
+          <!-- TAB 2: PLANS MANAGEMENT -->
+          <section class="admin-section" id="tab-plans">
+            <div class="admin-section-header">
+              <div>
+                <h2>Membership Pricing Plans</h2>
+                <p>Update monthly rates, annual discounts, and key plan features.</p>
+              </div>
+              <button class="btn btn-primary btn-sm" id="openAddPlanModal"><i class="fa-solid fa-plus"></i> Add New Plan</button>
+            </div>
+
+            <div class="admin-table-wrapper">
+              <table class="admin-table">
+                <thead>
+                  <tr>
+                    <th>Plan Name</th>
+                    <th>Monthly Price</th>
+                    <th>Annual Monthly Price</th>
+                    <th>Popular Badge</th>
+                    <th>Actions</th>
+                  </tr>
+                </thead>
+                <tbody id="plansTableBody">
+                  <!-- Rendered via admin.js -->
+                </tbody>
+              </table>
+            </div>
+          </section>
+
+          <!-- TAB 3: CLASS SCHEDULES MANAGEMENT -->
+          <section class="admin-section" id="tab-schedules">
+            <div class="admin-section-header">
+              <div>
+                <h2>Live Class Schedule Manager</h2>
+                <p>Schedule group fitness classes, set room locations, and assign instructors.</p>
+              </div>
+              <button class="btn btn-primary btn-sm" id="openAddScheduleModal"><i class="fa-solid fa-plus"></i> Add Live Class</button>
+            </div>
+
+            <div class="admin-table-wrapper">
+              <table class="admin-table">
+                <thead>
+                  <tr>
+                    <th>Class Name</th>
+                    <th>Day</th>
+                    <th>Time</th>
+                    <th>Coach</th>
+                    <th>Room</th>
+                    <th>Actions</th>
+                  </tr>
+                </thead>
+                <tbody id="schedulesTableBody">
+                  <!-- Rendered via admin.js -->
+                </tbody>
+              </table>
+            </div>
+          </section>
+
+          <!-- TAB 4: INQUIRIES & BOOKINGS -->
+          <section class="admin-section" id="tab-inquiries">
+            <div class="admin-section-header">
+              <div>
+                <h2>Customer Contact & Booking Inbox</h2>
+                <p>View inquiries submitted from the website forms stored in MongoDB.</p>
+              </div>
+            </div>
+
+            <h3 style="margin-bottom: 1rem; color: var(--accent-lime);">Recent Member Bookings</h3>
+            <div class="admin-table-wrapper" style="margin-bottom: 3rem;">
+              <table class="admin-table">
+                <thead>
+                  <tr>
+                    <th>Confirmation Code</th>
+                    <th>Type</th>
+                    <th>Guest Name</th>
+                    <th>Email / Phone</th>
+                    <th>Status</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody id="bookingsTableBody">
+                  <!-- Rendered via admin.js -->
+                </tbody>
+              </table>
+            </div>
+
+            <h3 style="margin-bottom: 1rem; color: var(--accent-cyan);">Contact Messages Inbox</h3>
+            <div class="admin-table-wrapper">
+              <table class="admin-table">
+                <thead>
+                  <tr>
+                    <th>Date</th>
+                    <th>Name</th>
+                    <th>Email & Phone</th>
+                    <th>Goal</th>
+                    <th>Message</th>
+                    <th>Status</th>
+                  </tr>
+                </thead>
+                <tbody id="contactsTableBody">
+                  <!-- Rendered via admin.js -->
+                </tbody>
+              </table>
+            </div>
+          </section>
+
+        </main>
+      </div>
+    </div>
+
+    <!-- MODAL: Add/Edit Trainer -->
+    <div class="modal-overlay" id="trainerAdminModal">
+      <div class="modal-card">
+        <button class="modal-close"><i class="fa-solid fa-xmark"></i></button>
+        <h3 style="margin-bottom: 1.5rem;" id="trainerModalTitle">Add Trainer</h3>
+        <form id="trainerAdminForm">
+          <input type="hidden" id="trainerFormId">
+          <div class="form-group">
+            <label class="form-label">Full Name *</label>
+            <input type="text" id="trainerFormName" class="form-input" required>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Role / Title *</label>
+            <input type="text" id="trainerFormRole" class="form-input" placeholder="e.g. Head Strength Coach" required>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Specialty Category *</label>
+            <select id="trainerFormCategory" class="form-select" required>
+              <option value="strength">Strength & Hypertrophy</option>
+              <option value="hiit">HIIT & Cardio</option>
+              <option value="boxing">Boxing & Combat</option>
+              <option value="recovery">Recovery & Mobility</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Certifications (comma separated)</label>
+            <input type="text" id="trainerFormCerts" class="form-input" placeholder="CSCS, NASM CPT">
+          </div>
+          <div class="form-group">
+            <label class="form-label">Years of Experience</label>
+            <input type="number" id="trainerFormExp" class="form-input" value="5" min="0">
+          </div>
+          <div class="form-group">
+            <label class="form-label">Photo Image URL</label>
+            <input type="text" id="trainerFormImage" class="form-input" value="assets/images/trainer_1.jpg">
+          </div>
+          <button type="submit" class="btn btn-primary" style="width: 100%;">Save Trainer</button>
+        </form>
+      </div>
+    </div>
+
+    <!-- MODAL: Add/Edit Schedule -->
+    <div class="modal-overlay" id="scheduleAdminModal">
+      <div class="modal-card">
+        <button class="modal-close"><i class="fa-solid fa-xmark"></i></button>
+        <h3 style="margin-bottom: 1.5rem;">Add Class Schedule</h3>
+        <form id="scheduleAdminForm">
+          <div class="form-group">
+            <label class="form-label">Class Name *</label>
+            <input type="text" id="schedFormName" class="form-input" required>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Day of Week *</label>
+            <select id="schedFormDay" class="form-select" required>
+              <option value="mon">Monday</option>
+              <option value="tue">Tuesday</option>
+              <option value="wed">Wednesday</option>
+              <option value="thu">Thursday</option>
+              <option value="fri">Friday</option>
+              <option value="sat">Saturday</option>
+              <option value="sun">Sunday</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Start Time *</label>
+            <input type="text" id="schedFormTime" class="form-input" placeholder="e.g. 06:00 AM" required>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Instructor Name *</label>
+            <input type="text" id="schedFormTrainerName" class="form-input" placeholder="e.g. Marcus Vance" required>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Room / Area</label>
+            <input type="text" id="schedFormRoom" class="form-input" value="Main Studio">
+          </div>
+          <button type="submit" class="btn btn-primary" style="width: 100%;">Save Live Class</button>
+        </form>
+      </div>
+    </div>
+  </template>
+
+  <!-- Axios & Scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  <script src="assets/js/config.js"></script>
+  <script src="assets/js/toast.js"></script>
+  <script src="assets/js/services/api.js"></script>
+  <script src="assets/js/services/authService.js"></script>
+  <script src="assets/js/services/planService.js"></script>
+  <script src="assets/js/services/trainerService.js"></script>
+  <script src="assets/js/services/scheduleService.js"></script>
+  <script src="assets/js/services/bookingService.js"></script>
+  <script src="assets/js/services/contactService.js"></script>
+  <script src="assets/js/admin.js"></script>
+</body>
+</html>

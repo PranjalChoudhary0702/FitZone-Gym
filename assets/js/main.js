@@ -508,13 +508,14 @@ function initFormSubmissions() {
       e.preventDefault();
       const submitBtn = bookingForm.querySelector('button[type="submit"]');
 
+      const schedId = document.getElementById('bookingScheduleId')?.value?.trim();
       const payload = {
         type: 'Class Reservation',
-        classScheduleId: document.getElementById('bookingScheduleId')?.value || null,
+        classScheduleId: schedId && schedId !== 'null' ? schedId : null,
         className: document.getElementById('bookingClassName').value,
         guestName: document.getElementById('bookName').value.trim(),
         guestEmail: document.getElementById('bookEmail').value.trim(),
-        guestPhone: document.getElementById('bookEmail').value.trim()
+        guestPhone: document.getElementById('bookPhone').value.trim()
       };
 
       setButtonLoading(submitBtn, true, 'Reserving Seat...');

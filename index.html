@@ -647,9 +647,15 @@
           <input type="text" id="bookName" class="form-input" placeholder="e.g. Sarah Connor" required>
         </div>
 
-        <div class="form-group">
-          <label class="form-label" for="bookEmail">Email Address *</label>
-          <input type="email" id="bookEmail" class="form-input" placeholder="sarah@example.com" required>
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+          <div class="form-group">
+            <label class="form-label" for="bookEmail">Email Address *</label>
+            <input type="email" id="bookEmail" class="form-input" placeholder="sarah@example.com" required>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="bookPhone">Phone Number *</label>
+            <input type="tel" id="bookPhone" class="form-input" placeholder="(555) 019-2834" required>
+          </div>
         </div>
 
         <button type="submit" class="btn btn-primary" style="width: 100%;">

@@ -1,3 +1,6 @@
+const dns = require('dns');
+dns.setServers(['1.1.1.1', '8.8.8.8']);
+
 const mongoose = require('mongoose');
 
 /**
@@ -12,7 +15,6 @@ const connectDB = async () => {
     console.log(`[Database] MongoDB Connected: ${conn.connection.host} / ${conn.connection.name}`);
   } catch (error) {
     console.error(`[Database Error] Connection failed: ${error.message}`);
-    // If running in development without local MongoDB running, do not crash immediately so API can run in mock/fallback state if needed.
     if (process.env.NODE_ENV === 'production') {
       process.exit(1);
     }

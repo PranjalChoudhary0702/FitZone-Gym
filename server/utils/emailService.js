@@ -9,12 +9,11 @@ const createTransporter = () => {
   const user = process.env.SMTP_USER;
   const pass = process.env.SMTP_PASS;
 
-  // If live credentials are placeholder/missing, fallback to development Ethereal test inbox or logger
+  // If live credentials are placeholder/missing, fallback to development preview logger
   if (!user || user.includes('example.com') || !pass || pass === 'your_brevo_smtp_key') {
     return {
       sendMail: async (options) => {
         console.log(`[Brevo SMTP Preview Logger] Email to: ${options.to} | Subject: "${options.subject}"`);
-        console.log(`[Notice]: Configure live Brevo credentials (SMTP_USER & SMTP_PASS) in server/.env for real inbox delivery.`);
         return { messageId: 'brevo-preview-' + Date.now(), accepted: [options.to], rejected: [] };
       }
     };
@@ -23,7 +22,7 @@ const createTransporter = () => {
   return nodemailer.createTransport({
     host,
     port,
-    secure: port === 465, // true for 465, false for 587
+    secure: port === 465,
     auth: {
       user,
       pass
@@ -89,25 +88,30 @@ const sendTestEmail = async (toEmail) => {
 };
 
 /**
- * Send Booking Confirmation Receipt
+ * Send Booking Confirmation Receipt (Fail-safe: Never crashes booking creation)
  */
 const sendBookingConfirmation = async (booking) => {
-  const subject = `🎉 Booking Confirmed [${booking.confirmationCode}] - FitZone Gym`;
-  const html = `
-    <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; background: #080B10; color: #F8FAFC; padding: 30px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.1);">
-      <div style="text-align: center; margin-bottom: 20px;">
-        <h1 style="color: #F8FAFC; margin: 0;">FIT<span style="color: #D4FF00;">ZONE</span> GYM</h1>
+  try {
+    const subject = `🎉 Booking Confirmed [${booking.confirmationCode}] - FitZone Gym`;
+    const html = `
+      <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; background: #080B10; color: #F8FAFC; padding: 30px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.1);">
+        <div style="text-align: center; margin-bottom: 20px;">
+          <h1 style="color: #F8FAFC; margin: 0;">FIT<span style="color: #D4FF00;">ZONE</span> GYM</h1>
+        </div>
+        <div style="background: #111622; padding: 20px; border-radius: 8px; border-left: 4px solid #D4FF00;">
+          <h2 style="color: #D4FF00; margin-top: 0;">Booking Confirmed!</h2>
+          <p>Hello <strong>${booking.guestName}</strong>,</p>
+          <p>Your <strong>${booking.type}</strong> pass is active.</p>
+          <p>Confirmation Code: <strong style="color: #D4FF00;">${booking.confirmationCode}</strong></p>
+        </div>
       </div>
-      <div style="background: #111622; padding: 20px; border-radius: 8px; border-left: 4px solid #D4FF00;">
-        <h2 style="color: #D4FF00; margin-top: 0;">Booking Confirmed!</h2>
-        <p>Hello <strong>${booking.guestName}</strong>,</p>
-        <p>Your <strong>${booking.type}</strong> pass is active.</p>
-        <p>Confirmation Code: <strong style="color: #D4FF00;">${booking.confirmationCode}</strong></p>
-      </div>
-    </div>
-  `;
+    `;
 
-  return await sendMail({ to: booking.guestEmail, subject, html });
+    return await sendMail({ to: booking.guestEmail, subject, html });
+  } catch (error) {
+    console.error(`[Brevo Booking Email Notice] Confirmation email to ${booking.guestEmail} failed, but booking was saved to DB: ${error.message}`);
+    return { success: false, error: error.message };
+  }
 };
 
 module.exports = {

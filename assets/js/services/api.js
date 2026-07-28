@@ -23,14 +23,17 @@ apiClient.interceptors.response.use(
     let errorMessage = 'An unexpected network error occurred.';
 
     if (error.response) {
-      errorMessage = error.response.data?.message || `Server Error (${error.response.status})`;
+      // Requirement #9: Print complete response body on error (422, 400, etc.)
+      console.error('[HTTP Error Response Body]:', error.response.data);
+
+      errorMessage = error.response.data?.message || error.response.data?.error || `Server Error (${error.response.status})`;
       
       // If 401 Unauthorized occurs on admin operations, handle token expiration/invalidation
       if (error.response.status === 401 && window.handleAdminUnauthorized) {
         window.handleAdminUnauthorized(errorMessage);
       }
     } else if (error.request) {
-      errorMessage = 'Backend API is unreachable. Please check your connection or start local server.';
+      errorMessage = 'Backend API is unreachable. Please check your connection.';
     } else {
       errorMessage = error.message;
     }

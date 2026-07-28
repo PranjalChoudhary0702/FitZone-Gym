@@ -488,7 +488,7 @@ function initFormSubmissions() {
 
       try {
         const res = await bookingService.createBooking(payload);
-        const code = res.data?.confirmationCode || 'FZ-PASS';
+        const code = res.data?.confirmationCode || res.confirmationCode || 'FZ-PASS';
         Toast.success(`🎉 SUCCESS! Your 3-Day VIP Pass [${code}] has been saved to MongoDB. Present at reception!`);
         trialForm.reset();
         document.getElementById('trialModal').classList.remove('active');
@@ -522,7 +522,7 @@ function initFormSubmissions() {
 
       try {
         const res = await bookingService.createBooking(payload);
-        const code = res.data?.confirmationCode || 'FZ-BOOKED';
+        const code = res.data?.confirmationCode || res.confirmationCode || 'FZ-BOOKED';
         Toast.success(`👍 Seat Confirmed! Reservation Code: ${code}`);
         bookingForm.reset();
         document.getElementById('bookingModal').classList.remove('active');

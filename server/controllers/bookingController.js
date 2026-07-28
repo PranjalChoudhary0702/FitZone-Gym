@@ -1,3 +1,4 @@
+const mongoose = require('mongoose');
 const Booking = require('../models/Booking');
 const ClassSchedule = require('../models/ClassSchedule');
 const asyncHandler = require('../middleware/asyncHandler');
@@ -55,9 +56,14 @@ exports.getBookingById = asyncHandler(async (req, res) => {
 exports.createBooking = asyncHandler(async (req, res) => {
   const { type, guestName, guestEmail, guestPhone, classScheduleId, className, startDate } = req.body;
 
+  // Safely check if classScheduleId is a valid Mongoose ObjectId
+  const validScheduleId = (classScheduleId && mongoose.Types.ObjectId.isValid(classScheduleId))
+    ? classScheduleId
+    : null;
+
   // If reserving a specific class seat, increment reserved seats counter
-  if (classScheduleId) {
-    const schedule = await ClassSchedule.findById(classScheduleId);
+  if (validScheduleId) {
+    const schedule = await ClassSchedule.findById(validScheduleId);
     if (schedule) {
       if (schedule.reservedSeats >= schedule.maxCapacity) {
         res.status(400);
@@ -69,11 +75,11 @@ exports.createBooking = asyncHandler(async (req, res) => {
   }
 
   const booking = await Booking.create({
-    type,
+    type: type || 'Free Trial Pass',
     guestName,
     guestEmail,
     guestPhone,
-    classSchedule: classScheduleId || null,
+    classSchedule: validScheduleId,
     className: className || '',
     startDate: startDate || Date.now(),
     status: 'confirmed'
